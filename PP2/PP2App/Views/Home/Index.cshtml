@@ -1,0 +1,52 @@
+﻿@model PP2App.Models.BinaryModel
+
+@{
+    ViewData["Title"] = "Operaciones binarias";
+}
+
+<h2>Operaciones con números binarios</h2>
+
+<form asp-action="Index" method="post">
+    <div>
+        <label for="A">a:</label>
+        <input asp-for="A" />
+        <span asp-validation-for="A" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="B">b:</label>
+        <input asp-for="B" />
+        <span asp-validation-for="B" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Procesar</button>
+</form>
+
+<hr />
+
+@if (ViewBag.Results != null)
+{
+    <table border="1" cellpadding="6">
+        <thead>
+            <tr>
+                <th>Operación</th>
+                <th>Bin</th>
+                <th>Oct</th>
+                <th>Dec</th>
+                <th>Hex</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var r in ViewBag.Results)
+        {
+            <tr>
+                <td>@r.Label</td>
+                <td>@r.Bin</td>
+                <td>@r.Oct</td>
+                <td>@r.Dec</td>
+                <td>@r.Hex</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
