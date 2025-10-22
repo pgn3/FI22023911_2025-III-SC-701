@@ -24,7 +24,7 @@ var list = new List<object>();
 app.MapGet("/", () => Results.Redirect("/swagger"));
 
 // POST con header opcional xml
-// ChatGPT me ayudo a reimplementar esta parte
+// ChatGPT me ayudo a reimplementar esta parte 
 app.MapPost("/", (HttpRequest request) =>
 {
     bool xml = false;
@@ -54,9 +54,6 @@ app.MapPut("/", ([FromForm] int quantity, [FromForm] string type) =>
 
     if (quantity <= 0)
         return Results.BadRequest(new { error = "La cantidad debe ser mayor a 0" });
-
-    if (quantity)
-        return Results.BadRequest(new { error = "La cantidad debe ser un número entero" });
 
     if (type == "int")
     {
