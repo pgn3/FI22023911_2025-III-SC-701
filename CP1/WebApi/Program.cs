@@ -42,11 +42,7 @@ app.MapPost("/", (HttpRequest request) =>
     return Results.Json(list);
 }).DisableAntiforgery();
 
-app.MapPatch("/clear", () =>
-{
-    list.Clear();
-    return Results.Ok();
-}).DisableAntiforgery();
+
 
 app.MapPut("/", ([FromForm] int quantity, [FromForm] string type) =>
 {
@@ -89,8 +85,9 @@ app.MapDelete("/", ([FromForm] int quantity) =>
 
 app.MapPatch("/", () =>
 {
+    list.Clear();
     return Results.Ok();
-});
+}).DisableAntiforgery();
 
 app.Run();
 
