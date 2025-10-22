@@ -96,6 +96,7 @@ app.MapPatch("/", () =>
 
 app.Run();
 
+// Sacado de la practica PP3
 public static class XmlHelper
 {
     public static string ToXml<T>(T obj)
