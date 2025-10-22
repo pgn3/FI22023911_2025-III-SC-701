@@ -23,7 +23,8 @@ var list = new List<object>();
 
 app.MapGet("/", () => Results.Redirect("/swagger"));
 
-// ✅ POST con header opcional xml
+// POST con header opcional xml
+// ChatGPT me ayudo a reimplementar esta parte
 app.MapPost("/", (HttpRequest request) =>
 {
     bool xml = false;
