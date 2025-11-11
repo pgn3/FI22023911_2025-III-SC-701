@@ -52,3 +52,12 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+repos/
+
+# Migraciones y bases de datos locales
+Migrations/
+data/
+*.db
+*.csv
+*.tsv
