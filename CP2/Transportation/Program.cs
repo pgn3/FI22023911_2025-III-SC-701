@@ -7,9 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSingleton<IAirplanes, Airbus>();
+// Dependency Injection (dos implementaciones de IAirplanes)
+builder.Services.AddTransient<IAirplanes, Airbus>();
+builder.Services.AddTransient<IAirplanes, Boeing>();
 
 var app = builder.Build();
+
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

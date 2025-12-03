@@ -13,7 +13,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index([FromServices] IAirplanes airbus, [FromServices] IAirplanes boeing)
+    public IActionResult Index([FromServices] IEnumerable<IAirplanes> airplanes)
     {
         using var db = new CarsContext();
         var customer = db.Customers.First((c) => c.LastName == "Mouse");
@@ -26,9 +26,15 @@ public class HomeController : Controller
 
         ViewData["BrandModel"] = $"{brand.BrandName} - {model.ModelName}";
         ViewData["Dealer"] = $"{dealer.DealerName} - {dealer.DealerAddress}";
+
+        // CHATGPT - Uso de las dos implementaciones de IAirplanes (Me salian repetidas sin el cambio en el homecontroller, el program.cs sí hice el cambio)
+        var airbus = airplanes.First(a => a.GetBrand == "Airbus");
+        var boeing = airplanes.First(a => a.GetBrand == "Boeing");
+
         ViewData["Airbus"] = $"{airbus.GetBrand}: {string.Join(" - ", airbus.GetModels)}";
         ViewData["Boeing"] = $"{boeing.GetBrand}: {string.Join(" - ", boeing.GetModels)}";
 
         return View();
     }
+
 }

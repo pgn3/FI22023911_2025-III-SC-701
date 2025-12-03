@@ -28,7 +28,7 @@ public class ShipsUnitTests
     {
         var expected = 11;
         var ships = new Ships();
-        var actual = ships.EndOfBritannic().Day;
+        var actual = ships.EndOfBritannic().Month;
         Assert.Equal(expected, actual);
     }
 
@@ -40,5 +40,14 @@ public class ShipsUnitTests
         var ships = new Ships();
         var actual = current - ships.EndOfBritannic().Year;
         Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void OlympicWasOutOfServiceSpecificDay()
+    {
+        Ships ship = new();
+        var date = ship.EndOfOlympic();
+
+        Assert.InRange(date.Day, 1, 31);
     }
 }
